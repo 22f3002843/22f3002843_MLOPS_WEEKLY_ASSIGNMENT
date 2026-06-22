@@ -78,6 +78,8 @@ mlops-bucket-22f3002843-2026/
 ```text
 week_1/
 ├── prepare_data.py
+├── metrics.json
+├── training_log.txt
 ├── train.py
 ├── inference.py
 ├── train.csv
