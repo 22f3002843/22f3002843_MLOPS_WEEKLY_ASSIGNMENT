@@ -76,7 +76,7 @@ mlops-bucket-22f3002843-2026/
 ## 📁 Repository Structure
 
 ```text
-iris-ml-pipeline/
+week_1/
 ├── prepare_data.py
 ├── train.py
 ├── inference.py
