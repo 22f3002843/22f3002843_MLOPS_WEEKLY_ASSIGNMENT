@@ -1,0 +1,3 @@
+Materializing [1m[32m1[0m feature views from [1m[32m2026-06-30 00:00:00+00:00[0m to [1m[32m2026-07-02 00:00:00+00:00[0m into the [1m[32msqlite[0m online store.
+
+[1m[32miris_features[0m:
