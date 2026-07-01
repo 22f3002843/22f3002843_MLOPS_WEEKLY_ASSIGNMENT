@@ -9,3 +9,6 @@ __pycache__/
 
 # Feast generated files
 feast_repo/data/*.db
+# DVC cache
+.dvc/cache/
+.dvc/tmp/
