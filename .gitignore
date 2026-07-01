@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+
+# Model files
+*.pkl
+*.pickle
+*.joblib
+
+# Feast generated files
+feast_repo/data/*.db
