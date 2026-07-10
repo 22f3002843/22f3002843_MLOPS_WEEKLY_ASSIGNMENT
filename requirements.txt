@@ -3,3 +3,5 @@ pandas
 scikit-learn
 joblib
 dvc[gcs]
+dvc
+dvc-gs
