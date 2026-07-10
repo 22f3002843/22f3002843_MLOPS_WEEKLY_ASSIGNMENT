@@ -34,7 +34,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install dvc[gcs] pytest pandas scikit-learn joblib iterative-cml
+          pip install dvc[gcs] pytest pandas scikit-learn joblib
 
       # 4. Authenticate with Google Cloud using Workload Identity Federation
       - name: Authenticate with GCP
