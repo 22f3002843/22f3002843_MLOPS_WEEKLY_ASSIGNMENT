@@ -2,4 +2,3 @@
     remote = myremote
 ['remote "myremote"']
     url = gs://mlops-bucket-22f3002843/dvc_remote
-    credentialpath = ../service-account-key.json
