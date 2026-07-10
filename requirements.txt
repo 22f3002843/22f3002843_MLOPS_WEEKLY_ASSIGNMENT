@@ -1,0 +1,7 @@
+pytest
+pandas
+scikit-learn==1.3.2
+joblib
+dvc[gcs]
+dvc
+dvc-gs

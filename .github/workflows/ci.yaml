@@ -1,0 +1,75 @@
+name: IRIS Pipeline CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  run-ci:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+
+    steps:
+      # 1. Checkout repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+          cache: pip
+
+      # 3. Install dependencies
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Authenticate with Google Cloud using Workload Identity Federation
+      - name: Authenticate with GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/588656205385/locations/global/workloadIdentityPools/mlops-github-pool/providers/github-provider
+          service_account: 588656205385-compute@developer.gserviceaccount.com
+
+      # 5. Install Cloud SDK
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      # 6. Pull data and model from DVC
+      - name: Pull Data and Model from DVC Remote
+        run: |
+          dvc pull
+
+      # 7. Setup CML
+      - name: Setup CML
+        uses: iterative/setup-cml@v2
+
+      # 8. Run tests and generate report
+      - name: Run Evaluation Tests & Generate Report
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          exit_code=0
+
+          echo "## 🚀 CI Run Performance Metrics Report" > report.md
+          echo "" >> report.md
+          echo "### 📊 Running Pytest Suite..." >> report.md
+          echo "" >> report.md
+
+          pytest -v -s >> report.md 2>&1 || exit_code=$?
+
+          cml comment create report.md
+
+          exit $exit_code
