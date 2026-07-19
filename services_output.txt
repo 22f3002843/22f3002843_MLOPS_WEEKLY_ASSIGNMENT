@@ -1,0 +1,3 @@
+NAME               TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)        AGE
+iris-api-service   LoadBalancer   34.118.229.55   34.70.144.248   80:30313/TCP   24m
+kubernetes         ClusterIP      34.118.224.1    <none>          443/TCP        75m
