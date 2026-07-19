@@ -18,9 +18,14 @@ jobs:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
 
+    # Added required permissions for Workload Identity Federation
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # Authenticate with GCP via Workload Identity Federation (No Key Needed!)
     - name: Authenticate to Google Cloud
