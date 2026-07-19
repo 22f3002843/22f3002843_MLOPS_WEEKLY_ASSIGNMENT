@@ -22,11 +22,12 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    # Authenticate to GCP using the Secret Key
+    # Authenticate with GCP via Workload Identity Federation (No Key Needed!)
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v1
       with:
-        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        workload_identity_provider: 'projects/588656205385/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
+        service_account: github-cd-sa@mlops-501911.iam.gserviceaccount.com
 
     # Configure Docker local credentials for GCP Registry
     - name: Set up Cloud SDK
