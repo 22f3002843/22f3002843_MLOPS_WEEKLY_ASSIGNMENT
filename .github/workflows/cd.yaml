@@ -31,7 +31,7 @@ jobs:
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v1
       with:
-        workload_identity_provider: 'projects/588656205385/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
+        workload_identity_provider: 'projects/588656205385/locations/global/workloadIdentityPools/mlops-github-pool/providers/github-provider'
         service_account: github-cd-sa@mlops-501911.iam.gserviceaccount.com
 
     # Configure Docker local credentials for GCP Registry
