@@ -1,3 +1,0 @@
-NAME                                   READY   STATUS    RESTARTS   AGE
-iris-api-deployment-7568cc69c5-dz7xn   1/1     Running   0          17m
-iris-api-deployment-7568cc69c5-xl8nw   1/1     Running   0          16m

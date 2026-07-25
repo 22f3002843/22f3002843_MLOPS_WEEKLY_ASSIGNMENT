@@ -1,21 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: iris-api-deployment
+  name: iris-app-deployment
   labels:
-    app: iris-api
+    app: iris-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: iris-api
+      app: iris-app
   template:
     metadata:
       labels:
-        app: iris-api
+        app: iris-app
     spec:
       containers:
-      - name: iris-api-container
-        image: us-central1-docker.pkg.dev/mlops-501911/iris-repo/iris-api:latest
+      - name: iris-app
+        image: us-central1-docker.pkg.dev/mlops-501911/mlops-repo/iris-app:latest
         ports:
         - containerPort: 8000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
