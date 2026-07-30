@@ -1,0 +1,14 @@
+# MLflow local runs and artifacts
+mlruns/
+mlflow.db
+
+# Generated dataset CSVs
+iris_poisoned_*.csv
+
+# Python cache & environment
+__pycache__/
+*.pyc
+*.pkl
+*.joblib
+.venv/
+env/
