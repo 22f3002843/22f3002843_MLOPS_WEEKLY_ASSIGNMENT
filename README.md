@@ -202,7 +202,11 @@ python mlsecops_experiment.py
 
 ### 4. Launch MLflow UI
 ```bash
-mlflow ui --host 0.0.0.0 --port 5000
+mlflow ui \
+  --host 0.0.0.0 \
+  --port 5000 \
+  --allowed-hosts "*" \
+  --cors-allowed-origins "*"
 ```
 > Access the MLflow Web UI at `http://localhost:5000` (or via GCP Cloud Shell Web Preview on port 5000).
 
