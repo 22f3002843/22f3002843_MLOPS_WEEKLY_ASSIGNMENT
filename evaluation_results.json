@@ -1,0 +1,78 @@
+{
+  "experiment": "IRIS Fine-Tuning: Raw Features (v1) vs Natural Language Description (v2)",
+  "generated_at_utc": "2026-08-22T19:57:08.628407+00:00",
+  "project_id": "mlops-501911",
+  "base_model": "gemini-2.5-flash",
+  "platform": "Vertex AI Supervised Fine-Tuning",
+  "hyperparameters": {
+    "epochs": 5,
+    "learning_rate_multiplier": 1.0
+  },
+  "tuning_jobs": {
+    "v1_raw_features": {
+      "resource_name": "projects/588656205385/locations/us-central1/tuningJobs/4076595636659552256",
+      "tuned_model_display_name": "iris-v1-raw",
+      "endpoint": "projects/588656205385/locations/us-central1/endpoints/145070113924579328",
+      "training_data": "gs://mlops-501911-mlops-week10/v1/iris_v1_train_tuning.jsonl",
+      "state": "JOB_STATE_SUCCEEDED"
+    },
+    "v2_natural_language": {
+      "resource_name": "projects/588656205385/locations/us-central1/tuningJobs/883543500853870592",
+      "tuned_model_display_name": "iris-v2-description",
+      "endpoint": "projects/588656205385/locations/us-central1/endpoints/8939474286272315392",
+      "training_data": "gs://mlops-501911-mlops-week10/v2/iris_v2_train_tuning.jsonl",
+      "state": "JOB_STATE_SUCCEEDED"
+    }
+  },
+  "evaluation": {
+    "test_set_size_per_model": 30,
+    "v1_raw_features": {
+      "accuracy": 0.567,
+      "format_compliance": 1.0,
+      "per_class": {
+        "setosa": {
+          "precision": 0.455,
+          "recall": 1.0,
+          "f1": 0.625
+        },
+        "versicolor": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.333
+        },
+        "virginica": {
+          "precision": 0.833,
+          "recall": 0.5,
+          "f1": 0.625
+        }
+      }
+    },
+    "v2_natural_language": {
+      "accuracy": 0.4,
+      "format_compliance": 1.0,
+      "per_class": {
+        "setosa": {
+          "precision": 0.357,
+          "recall": 1.0,
+          "f1": 0.526
+        },
+        "versicolor": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "virginica": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.333
+        }
+      }
+    }
+  },
+  "comparison": {
+    "accuracy_delta_v1_minus_v2": 0.167,
+    "format_compliance_delta": 0.0,
+    "winner": "v1_raw_features",
+    "notes": "v1 (raw feature strings) outperformed the other by 16.7 accuracy points. Both achieved identical format compliance, indicating fine-tuning reliably fixes output structure regardless of input representation, but does not guarantee output correctness. With a small (~120-example) training set, the extra linguistic wrapping in v2 appears to add noise rather than signal for this numeric classification task."
+  }
+}

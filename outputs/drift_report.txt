@@ -1,4 +1,0 @@
-sepal length (cm): KS=0.000, p-value=1.00000
-sepal width (cm): KS=0.000, p-value=1.00000
-petal length (cm): KS=0.413, p-value=0.00000
-petal width (cm): KS=0.000, p-value=1.00000

@@ -6,3 +6,6 @@ seaborn
 fairlearn
 shap
 scipy
+scikit-learn>=1.5
+numpy>=1.26
+google-genai>=1.60
