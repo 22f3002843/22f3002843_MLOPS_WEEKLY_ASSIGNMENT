@@ -1,0 +1,10 @@
+{
+  "injection_block_rate": 1.0,
+  "leakage_block_rate": 1.0,
+  "false_positive_rate_v1": 0.0,
+  "false_positive_rate_v2": 0.0,
+  "guarded_accuracy_v1": 1.0,
+  "guarded_accuracy_v2": 1.0,
+  "v2_mismatches": [],
+  "v1_mismatches": []
+}

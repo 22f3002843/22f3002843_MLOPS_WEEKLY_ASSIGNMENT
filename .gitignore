@@ -1,0 +1,6 @@
+iris_v1_train.jsonl
+iris_v1_test.jsonl
+iris_v2_train.jsonl
+iris_v2_test.jsonl
+__pycache__/
+*.pyc
